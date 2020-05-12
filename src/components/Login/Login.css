@@ -1,0 +1,42 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-top: 10%;
+  border: solid 1px red;
+  width: 40%;
+  height: 40%;
+}
+
+form {
+  border: solid 1px orange;
+
+}
+
+.name-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px green;
+  flex-direction: row;
+}
+
+.email-form {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  border: solid 1px pink;
+}
+
+.purpose-form {
+  align-items: center;
+  justify-content: center;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: row;
+}
+
+.sign-in-btn {
+
+}
