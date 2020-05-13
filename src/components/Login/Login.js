@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './Login.css';
-
+import { BrowserRouter, Link, Redirect } from 'react-router-dom';
+ 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       loggedOn: false,
       name: '',
@@ -22,6 +23,7 @@ class Login extends Component {
       alert('Please make sure all fields are filled out!');
     }
     this.setState({loggedOn: true});
+    this.props.loggingIn();
   }
 
   render() {
@@ -43,7 +45,7 @@ class Login extends Component {
             <option value="Other">Other</option>
           </select>
         </div>
-        <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>Sign In!</button>
+          <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>Sign In!</button>
       </form>
     </div> )
   }
