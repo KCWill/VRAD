@@ -1,0 +1,11 @@
+.Areas {
+    border: 1px solid green
+}
+
+.area-container {
+    border: 1px solid red
+}
+
+.area-card { 
+    border: 1px solid blue
+}
