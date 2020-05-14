@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import './Login.css';
-
+import { BrowserRouter, Link, Redirect } from 'react-router-dom';
+ 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       loggedOn: false,
       name: '',
       email: '',
-      purpose: 'Vaction'
+      purpose: 'Vacation'
     }
   }
 
@@ -22,6 +23,7 @@ class Login extends Component {
       alert('Please make sure all fields are filled out!');
     }
     this.setState({loggedOn: true});
+    this.props.loggingIn(this.state.name, this.state.purpose);
   }
 
   render() {
@@ -38,12 +40,12 @@ class Login extends Component {
         <div className="purpose-form">
           <p>Purpose:</p>
           <select name='purpose' value={this.state.purpose} onChange={this.handleChange}>
-            <option value="Vaction">Vaction</option>
-            <option value="Buisness">Buisness</option>
+            <option value="Vacation">Vacation</option>
+            <option value="Business">Business</option>
             <option value="Other">Other</option>
           </select>
         </div>
-        <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>Sign In!</button>
+          <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>Sign In!</button>
       </form>
     </div> )
   }
