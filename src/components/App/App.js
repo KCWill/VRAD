@@ -9,12 +9,14 @@ class App extends Component {
     super();
     this.state = {
       isLoggedIn: false,
+      username: '',
+      purpose: '',
       areas: []
     }
   }
 
-  loggingIn = () => {
-    this.setState({isLoggedIn: !this.state.isLoggedIn})
+  loggingIn = (username, purpose) => {
+    this.setState({isLoggedIn: !this.state.isLoggedIn, username, purpose})
   }
 
   componentDidMount = () => {
@@ -25,7 +27,7 @@ class App extends Component {
           return fetch(`https://vrad-api.herokuapp.com${area.details}`)
             .then(response => response.json())
             .then(info => {
-              return {...info}
+              return {...info, shortName:area.area}
             })
         })
         Promise.all(areaNamePromises)
@@ -41,7 +43,7 @@ class App extends Component {
 
         <main className="App">
           <header><h1>Vacation Rentals Around Denver</h1><button className='sign-out-btn' type='button'>Sign out!</button> </header>
-          <Areas data={this.state.areas}/>
+          <Areas data={this.state.areas} purpose={this.state.purpose} username={this.state.username}/>
           {console.log('apps', this.state.areas)}
         </main>
       );

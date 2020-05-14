@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Areas.css';
 import Area from '../Area/Area.js'
+import Sidebar from '../Sidebar/Sidebar.js'
 
 class Areas extends Component {
     constructor(props){
@@ -12,16 +13,18 @@ class Areas extends Component {
     }
 
     render() {
-        return(
-            <section className='area-container'>
-                {this.props.data.map((location, index) => {
-                    return (
-                    <div className='area-card' key={index}>
-                        <h2>{location.name}</h2>
-                        <Area data={this.props}/>
-                    </div>
+        return (
+            <section className='areas-page'>
+                <Sidebar username={this.props.username} purpose={this.props.purpose}/>
+                <section className='area-container'>
+                 {this.props.data.map((location, index) => {
+                        return (
+                     <div className='area-card' key={index}>
+                         <Area data={location} shortName={location.shortName}/>
+                      </div>
+                    )}
                 )}
-            )}
+                </section>
             </section>
         )
     }
