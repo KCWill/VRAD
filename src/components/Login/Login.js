@@ -21,12 +21,11 @@ class Login extends Component {
     if (this.state.name.length < 1 || this.state.email.length < 1) {
       alert('Please make sure all fields are filled out!');
     }
-    this.props.loggingIn();
+    this.props.loggingIn(this.state.name, this.state.purpose);
     this.setState({isLoggedIn: true});
   }
 
   render() {
-    console.log(this.state.isLoggedIn)
     return ( <div className="login-form">
       <form>
         <div className="name-form">

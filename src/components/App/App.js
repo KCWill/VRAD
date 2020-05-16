@@ -16,8 +16,8 @@ class App extends Component {
   }
 
   loggingIn = (username, purpose) => {
-    this.setState({isLoggedIn: !this.state.isLoggedIn, username, purpose})
-    // console.log(this.state.isLoggedIn)
+    console.log('app', username, purpose)
+    this.setState({isLoggedIn: !this.state.isLoggedIn, username, purpose});
   }
 
   componentDidMount = () => {
@@ -40,16 +40,13 @@ class App extends Component {
 
   render () {
 
-    if(this.state.isLoggedIn === true){
+    if (this.state.isLoggedIn === true) {
       return (
-
         <main className="App">
           <header className="areas-page-header"><h1>Vacation Rentals Around Denver</h1><button className='sign-out-btn' type='button'>Sign out!</button> </header>
           <Areas data={this.state.areas} purpose={this.state.purpose} username={this.state.username}/>
-          {console.log('apps', this.state.areas)}
         </main>
       );
-
     } else {
       return (
         <main className='App'>

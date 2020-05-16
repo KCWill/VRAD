@@ -4,12 +4,11 @@ import Area from '../Area/Area.js'
 import Sidebar from '../Sidebar/Sidebar.js'
 
 class Areas extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {};
-  }
+    this.state = {
 
-  getAreaNames = () => {
+    };
   }
 
   render() {
