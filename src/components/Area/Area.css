@@ -1,0 +1,32 @@
+.area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #BFD7EA;
+  border-radius: 4px;
+}
+
+.area-name {
+  margin: 0;
+  font-size: 0.8em;
+}
+
+.about {
+  font-size: 0.5em;
+  margin: 3%;
+}
+
+.view-listings-btn {
+  cursor: pointer;
+  font-size: 0.5em;
+  align-self: center;
+  width: 40%;
+  border-radius: 4px;
+  background-color: #FFFAF1;
+  border: solid 1px #004385;
+}
+
+.view-listings-btn:hover {
+  background-color: #077380;
+}

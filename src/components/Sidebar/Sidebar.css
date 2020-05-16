@@ -1,7 +1,27 @@
 .sidebar {
-    
-    border: 1px solid pink;
-    width: 25%;
-    height: 100vh;
+  background-color: #077380;
+  width: 25%;
+  height: 100vh;
 }
 
+.greeting {
+  font-size: 1em;
+}
+
+.choose-message {
+  font-size: 0.5em;
+}
+
+.view-fav-btn {
+  background-color: #FFFAF1;
+  border: solid 1px #004385;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.5em;
+  height: 10%;
+  width: 50%;
+}
+
+.view-fav-btn:hover {
+  background-color: #BFD7EA;
+}

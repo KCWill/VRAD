@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Area.css'
 
 class Area extends Component {
   constructor(props) {
@@ -10,10 +11,10 @@ class Area extends Component {
 
   render() {
     return (
-      <section>
-        <h2>{`${this.props.data.name} (${this.props.shortName})`}</h2>
-        <p>{this.props.data.about}</p>
-        <button type='button'>View Listings</button>
+      <section className="area">
+        <h2 className="area-name">{`${this.props.data.name} (${this.props.shortName})`}</h2>
+        <p className="about">{this.props.data.about}</p>
+        <button className="view-listings-btn"type='button'>View Listings</button>
       </section>
     )
   }

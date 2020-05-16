@@ -37,13 +37,11 @@ class App extends Component {
         .catch(err => console.error(err))
   }
 
-
   render () {
-
     if (this.state.isLoggedIn === true) {
       return (
         <main className="App">
-          <header className="areas-page-header"><h1>Vacation Rentals Around Denver</h1><button className='sign-out-btn' type='button'>Sign out!</button> </header>
+          <header className="areas-page-header"><h1 className="header-text-area">Vacation Rentals Around Denver</h1><button className='sign-out-btn' type='button'>Sign out!</button> </header>
           <Areas data={this.state.areas} purpose={this.state.purpose} username={this.state.username}/>
         </main>
       );
@@ -51,7 +49,7 @@ class App extends Component {
       return (
         <main className='App'>
           <header className="login-page-header"><h1 className="header-text">Vacation Rentals Around Denver</h1></header>
-          <Login loggingIn={this.loggingIn} />
+          <Login loggingIn={this.loggingIn}/>
         </main>
       )
     }
