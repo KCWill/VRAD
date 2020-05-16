@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import './Login.css';
-import { BrowserRouter, Link, Redirect } from 'react-router-dom';
- 
+
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedOn: false,
+      isloggedIn: false,
       name: '',
       email: '',
       purpose: 'Vacation'
@@ -22,30 +21,31 @@ class Login extends Component {
     if (this.state.name.length < 1 || this.state.email.length < 1) {
       alert('Please make sure all fields are filled out!');
     }
-    this.setState({loggedOn: true});
-    this.props.loggingIn(this.state.name, this.state.purpose);
+    this.props.loggingIn();
+    this.setState({isLoggedIn: true});
   }
 
   render() {
+    console.log(this.state.isLoggedIn)
     return ( <div className="login-form">
       <form>
         <div className="name-form">
           <p>Name:</p>
-          <input placeholder="Name" name='name' value={this.state.name} onChange={this.handleChange}/>
+          <input className="name-input" placeholder="Name" name='name' value={this.state.name} onChange={this.handleChange}/>
         </div>
         <div className="email-form">
           <p>Email:</p>
-          <input placeholder="Email" name='email' value={this.state.email} onChange={this.handleChange}/>
+          <input className="email-input" placeholder="Email" name='email' value={this.state.email} onChange={this.handleChange}/>
         </div>
         <div className="purpose-form">
           <p>Purpose:</p>
           <select name='purpose' value={this.state.purpose} onChange={this.handleChange}>
             <option value="Vacation">Vacation</option>
-            <option value="Business">Business</option>
+            <option value="Buisness">Buisness</option>
             <option value="Other">Other</option>
           </select>
         </div>
-          <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>Sign In!</button>
+        <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>Sign In!</button>
       </form>
     </div> )
   }

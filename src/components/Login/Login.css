@@ -2,23 +2,52 @@
   display: flex;
   flex-direction: column;
   align-self: center;
-  margin-top: 10%;
-  border: solid 1px red;
-  width: 40%;
-  height: 40%;
+  width: 100%;
+  height: 100vh;
+  background-image: url('https://masa.imgix.net/https%3A%2F%2Fscontent-frt3-1.cdninstagram.com%2Fv%2Ft51.2885-15%2Fe35%2F20986700_168319833736143_4921893102282604544_n.jpg%3F_nc_ht%3Dscontent-frt3-1.cdninstagram.com%26_nc_cat%3D103%26_nc_ohc%3DHyFjQsabEawAX8N6m1B%26oh%3Dac15ddbd7f22ce99fd7008e749b2a524%26oe%3D5ECBC824?auto=format&s=2bc611f4ca4a9f580d5b87ee91fa1663');
+  background-size: 100vw 90vh;
+  background-repeat: no-repeat;
 }
 
 form {
-  border: solid 1px orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  margin-top: 10%;
+  width: 40%;
+  height: 50%;
+  border: solid 2px #004385;
+  border-radius: 5px;
+  background-color: #FFFAF1;
+}
 
+p {
+  font-size: 0.8em;
+  margin: 1% 2% 1% 0;
+}
+
+.name-input {
+  /* background-color: #F8EDB8; */
+  background-color: #FFB4B1;
+  border-radius: 3px;
+  border: solid #004385 1px;
+}
+
+.email-input {
+  background-color: #FFB4B1;
+  border-radius: 3px;
+  border: solid #004385 1px;
+  margin-left: 1%;
 }
 
 .name-form {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 1px green;
   flex-direction: row;
+  height: 20%;
+  /* margin-top: 2%; */
 }
 
 .email-form {
@@ -26,17 +55,34 @@ form {
   justify-content: center;
   display: flex;
   flex-direction: row;
-  border: solid 1px pink;
+  height: 20%;
 }
 
 .purpose-form {
   align-items: center;
   justify-content: center;
-  border: solid 1px black;
   display: flex;
   flex-direction: row;
+  margin: 2% 0 3% 0;
+}
+
+select {
+  background-color: #FFB4B1;
+  /* background-color: #FDF47F; */
+  cursor: pointer;
+  border: solid #004385 1px;
+  /* border-radius: 4px; */
 }
 
 .sign-in-btn {
+  border-radius: 3px;
+  border: solid #004385 1px;
+  width: 50%;
+  align-self: center;
+  cursor: pointer;
+  background-color: #FFB4B1;
+}
 
+.sign-in-btn:hover {
+  background-color: #05B2DC;
 }

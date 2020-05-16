@@ -4,29 +4,29 @@ import Area from '../Area/Area.js'
 import Sidebar from '../Sidebar/Sidebar.js'
 
 class Areas extends Component {
-    constructor(props){
-        super(props);
-        this.state = {};
-    }
+  constructor(props){
+    super(props);
+    this.state = {};
+  }
 
-    getAreaNames = () => {
-    }
+  getAreaNames = () => {
+  }
 
-    render() {
-        return (
-            <section className='areas-page'>
-                <Sidebar username={this.props.username} purpose={this.props.purpose}/>
-                <section className='area-container'>
-                 {this.props.data.map((location, index) => {
-                        return (
-                     <div className='area-card' key={index}>
-                         <Area data={location} shortName={location.shortName}/>
-                      </div>
-                    )}
-                )}
-                </section>
-            </section>
-        )
-    }
+  render() {
+    return (
+      <section className='areas-page'>
+        <Sidebar username={this.props.username} purpose={this.props.purpose}/>
+        <section className='area-container'>
+          {this.props.data.map((location, index) => {
+            return (
+              <div className='area-card' key={index}>
+                <Area data={location} shortName={location.shortName}/>
+              </div>
+          )}
+          )}
+        </section>
+      </section>
+    )
+  }
 }
 export default Areas
