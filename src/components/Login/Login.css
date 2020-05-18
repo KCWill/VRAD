@@ -28,7 +28,6 @@ p {
 }
 
 .name-input {
-  /* background-color: #F8EDB8; */
   background-color: #FFB4B1;
   border-radius: 3px;
   border: solid #004385 1px;
@@ -47,7 +46,6 @@ p {
   justify-content: center;
   flex-direction: row;
   height: 20%;
-  /* margin-top: 2%; */
 }
 
 .email-form {
@@ -68,10 +66,8 @@ p {
 
 select {
   background-color: #FFB4B1;
-  /* background-color: #FDF47F; */
   cursor: pointer;
   border: solid #004385 1px;
-  /* border-radius: 4px; */
 }
 
 .sign-in-btn {
