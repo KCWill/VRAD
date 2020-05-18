@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
+import './Area.css'
 
 class Area extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ class Area extends Component {
     displayListings = () => {
         this.setState({...this.state, viewListings: true})
     }
-        
+
     render(){
         return (
         <section className="area">
