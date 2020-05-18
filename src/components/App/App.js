@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Areas from '../Areas/Areas.js';
 import Login from '../Login/Login.js';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -16,8 +16,11 @@ class App extends Component {
   }
 
   loggingIn = (username, purpose) => {
-    console.log('app', username, purpose)
-    this.setState({isLoggedIn: !this.state.isLoggedIn, username, purpose});
+    this.setState({...this.state, isLoggedIn: true, username, purpose})
+  }
+
+  signOut = () => {
+    this.setState({...this.state, isLoggedIn: false});
   }
 
   componentDidMount = () => {
@@ -38,22 +41,57 @@ class App extends Component {
   }
 
   render () {
-    if (this.state.isLoggedIn === true) {
       return (
-        <main className="App">
-          <header className="areas-page-header"><h1 className="header-text-area">Vacation Rentals Around Denver</h1><button className='sign-out-btn' type='button'>Sign out!</button> </header>
-          <Areas data={this.state.areas} purpose={this.state.purpose} username={this.state.username}/>
-        </main>
-      );
-    } else {
-      return (
+        <div>
+        <header className="areas-page-header">
+          <h1 className="header-text-area">
+            Vacation Rentals Around Denver
+            {this.state.isLoggedIn && <button className='sign-out-btn' type='button' onClick={this.signOut}>Sign out!</button>}
+          </h1>
+          {console.log(this.state)}
+          {!this.state.isLoggedIn && <Redirect to='/' />}
+        </header>
         <main className='App'>
-          <header className="login-page-header"><h1 className="header-text">Vacation Rentals Around Denver</h1></header>
-          <Login loggingIn={this.loggingIn}/>
+          <Route 
+            exact path='/'
+            render={() => (
+              <section>
+                <Login 
+                  loggingIn={this.loggingIn}
+                />
+                {console.log(this.state)}
+              </section>
+            )}
+          />
+          <Route 
+            exact
+            path='/areas'
+            render={() => (
+              <section>
+                <header>
+                    {!this.state.isLoggedIn && <Redirect to='/' />}
+                </header>
+                <Areas 
+                  data={this.state.areas} 
+                  purpose={this.state.purpose} 
+                  username={this.state.username}
+                />
+              </section>
+            )}
+          />
+          <Route
+            path='/areas/:area_id/listings'
+            render={({ location }) => (
+              <section>
+                {console.log('listings worked!')}
+                {console.log(this.state)}
+              </section>
+            )}
+          />
         </main>
-      )
+        </div>
+      );
     }
-  }
 }
 
 export default App;

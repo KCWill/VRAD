@@ -1,22 +1,33 @@
 import React, {Component} from 'react';
-import './Area.css'
+import { Redirect } from 'react-router-dom';
 
 class Area extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    constructor(props){
+        super(props);
+        this.state = {
+            viewListings: false
+        };
+    }
 
-    };
-  }
-
-  render() {
-    return (
-      <section className="area">
-        <h2 className="area-name">{`${this.props.data.name} (${this.props.shortName})`}</h2>
-        <p className="about">{this.props.data.about}</p>
-        <button className="view-listings-btn"type='button'>View Listings</button>
-      </section>
-    )
-  }
+    displayListings = () => {
+        this.setState({...this.state, viewListings: true})
+    }
+        
+    render(){
+        return (
+        <section className="area">
+            <h2 className="area-name">
+                {`${this.props.data.name} (${this.props.shortName})`}
+            </h2>
+            <p className="about">
+                {this.props.data.about}
+            </p>
+            <button className="view-listings-btn" type='button' onClick={this.displayListings}>
+                View Listings
+            </button>
+            {this.state.viewListings && <Redirect to={`/areas/${this.props.data.id}/listings`} />}
+        </section>
+        )
+    }
 }
 export default Area

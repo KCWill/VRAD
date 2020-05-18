@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Login.css';
-
+import { Redirect } from 'react-router-dom';
+ 
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -20,9 +21,10 @@ class Login extends Component {
     e.preventDefault();
     if (this.state.name.length < 1 || this.state.email.length < 1) {
       alert('Please make sure all fields are filled out!');
+      return
     }
     this.props.loggingIn(this.state.name, this.state.purpose);
-    this.setState({isLoggedIn: true});
+    this.setState({...this.state, isLoggedIn: true});
   }
 
   render() {
@@ -44,8 +46,11 @@ class Login extends Component {
             <option value="Other">Other</option>
           </select>
         </div>
-        <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>Sign In!</button>
+          <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>
+            Sign In!
+          </button>
       </form>
+      {this.state.loggedOn && <Redirect to='/areas'/>}
     </div> )
   }
 }
