@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Areas from '../Areas/Areas.js';
 import Login from '../Login/Login.js';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -16,9 +16,12 @@ class App extends Component {
   }
 
   loggingIn = (username, purpose) => {
-    this.setState({isLoggedIn: !this.state.isLoggedIn, username, purpose})
+    this.setState({...this.state, isLoggedIn: true, username, purpose})
   }
 
+  signOut = () => {
+    this.setState({...this.state, isLoggedIn: false});
+  }
   componentDidMount = () => {
     fetch("https://vrad-api.herokuapp.com/api/v1/areas")
       .then(response => response.json())
@@ -38,25 +41,49 @@ class App extends Component {
 
 
   render () {
-    if(this.state.isLoggedIn === true){
+    
       return (
-
-        <main className="App">
-          <header><h1>Vacation Rentals Around Denver</h1><button className='sign-out-btn' type='button'>Sign out!</button> </header>
-          <Areas data={this.state.areas} purpose={this.state.purpose} username={this.state.username}/>
-          {console.log('apps', this.state.areas)}
-        </main>
-      );
-
-    } else {
-      return (
+        <div>
+        <header>
+          <h1>
+            Vacation Rentals Around Denver
+          </h1>
+        </header>
         <main className='App'>
-          <header><h1>Vacation Rentals Around Denver</h1></header>
-          <Login loggingIn={this.loggingIn} />
+          <Route 
+            exact path='/'
+            render={() => (
+              <section>
+                <Login 
+                  loggingIn={this.loggingIn}
+                />
+              </section>
+            )}
+          />
+          <Route
+            exact 
+            path='/areas'
+            render={() => (
+              <section>
+                <header>
+                    <button className='sign-out-btn' type='button' onClick={this.signOut}>
+                      Sign out!
+                    </button>
+                    {!this.state.isLoggedIn && <Redirect to='/' />}
+                </header>
+                <Areas 
+                  data={this.state.areas} 
+                  purpose={this.state.purpose} 
+                  username={this.state.username}
+                />
+              </section>
+            )}
+          />
+          
         </main>
-      )
+        </div>
+      );
     }
-  }
 }
 
 export default App;

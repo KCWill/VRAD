@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Login.css';
-import { BrowserRouter, Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
  
 class Login extends Component {
   constructor(props) {
@@ -21,10 +21,12 @@ class Login extends Component {
     e.preventDefault();
     if (this.state.name.length < 1 || this.state.email.length < 1) {
       alert('Please make sure all fields are filled out!');
+      return
     }
-    this.setState({loggedOn: true});
+    this.setState({...this.state, loggedOn: true});
     this.props.loggingIn(this.state.name, this.state.purpose);
   }
+
 
   render() {
     return ( <div className="login-form">
@@ -45,8 +47,11 @@ class Login extends Component {
             <option value="Other">Other</option>
           </select>
         </div>
-          <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>Sign In!</button>
+          <button className="sign-in-btn" type="button" onClick={this.handleSubmit}>
+            Sign In!
+          </button>
       </form>
+      {this.state.loggedOn && <Redirect to='/areas'/>}
     </div> )
   }
 }

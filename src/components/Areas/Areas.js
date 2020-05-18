@@ -21,7 +21,7 @@ class Areas extends Component {
                         return (
                      <div className='area-card' key={index}>
                          <Area data={location} shortName={location.shortName}/>
-                      </div>
+                    </div>
                     )}
                 )}
                 </section>
