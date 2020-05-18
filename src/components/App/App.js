@@ -52,18 +52,18 @@ class App extends Component {
           {!this.state.isLoggedIn && <Redirect to='/' />}
         </header>
         <main className='App'>
-          <Route 
+          <Route
             exact path='/'
             render={() => (
-              <section>
-                <Login 
+              <section className="login-page">
+                <Login
                   loggingIn={this.loggingIn}
                 />
                 {console.log(this.state)}
               </section>
             )}
           />
-          <Route 
+          <Route
             exact
             path='/areas'
             render={() => (
@@ -71,9 +71,9 @@ class App extends Component {
                 <header>
                     {!this.state.isLoggedIn && <Redirect to='/' />}
                 </header>
-                <Areas 
-                  data={this.state.areas} 
-                  purpose={this.state.purpose} 
+                <Areas
+                  data={this.state.areas}
+                  purpose={this.state.purpose}
                   username={this.state.username}
                 />
               </section>
