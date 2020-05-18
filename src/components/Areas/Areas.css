@@ -1,28 +1,25 @@
-.Areas {
-
-
-}
-
 .areas-page {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    border: 1px solid green
-
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
 }
 
 .area-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 1px solid red;
-    width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #FFFAF1;
+  width: 75%;
 }
 
 .area-card {
-    display: flex;
-    margin: 2%;
-    width: 45%;
-    height: 45%; 
-    border: 1px solid blue
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+  width: 45%;
+  height: 40%;
+  border: 1px solid #004385;
+  border-radius: 4px;
 }

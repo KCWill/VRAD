@@ -6,7 +6,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedOn: false,
+      isloggedIn: false,
       name: '',
       email: '',
       purpose: 'Vacation'
@@ -23,27 +23,26 @@ class Login extends Component {
       alert('Please make sure all fields are filled out!');
       return
     }
-    this.setState({...this.state, loggedOn: true});
     this.props.loggingIn(this.state.name, this.state.purpose);
+    this.setState({...this.state, isLoggedIn: true});
   }
-
 
   render() {
     return ( <div className="login-form">
       <form>
         <div className="name-form">
           <p>Name:</p>
-          <input placeholder="Name" name='name' value={this.state.name} onChange={this.handleChange}/>
+          <input className="name-input" placeholder="Name" name='name' value={this.state.name} onChange={this.handleChange}/>
         </div>
         <div className="email-form">
           <p>Email:</p>
-          <input placeholder="Email" name='email' value={this.state.email} onChange={this.handleChange}/>
+          <input className="email-input" placeholder="Email" name='email' value={this.state.email} onChange={this.handleChange}/>
         </div>
         <div className="purpose-form">
           <p>Purpose:</p>
           <select name='purpose' value={this.state.purpose} onChange={this.handleChange}>
             <option value="Vacation">Vacation</option>
-            <option value="Business">Business</option>
+            <option value="Buisness">Buisness</option>
             <option value="Other">Other</option>
           </select>
         </div>

@@ -40,13 +40,11 @@ class App extends Component {
         .catch(err => console.error(err))
   }
 
-
   render () {
-    
       return (
         <div>
-        <header>
-          <h1>
+        <header className="areas-page-header">
+          <h1 className="header-text-area">
             Vacation Rentals Around Denver
             {this.state.isLoggedIn && <button className='sign-out-btn' type='button' onClick={this.signOut}>Sign out!</button>}
           </h1>
