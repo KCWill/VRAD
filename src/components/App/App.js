@@ -22,6 +22,7 @@ class App extends Component {
   signOut = () => {
     this.setState({...this.state, isLoggedIn: false});
   }
+
   componentDidMount = () => {
     fetch("https://vrad-api.herokuapp.com/api/v1/areas")
       .then(response => response.json())
@@ -47,7 +48,10 @@ class App extends Component {
         <header>
           <h1>
             Vacation Rentals Around Denver
+            {this.state.isLoggedIn && <button className='sign-out-btn' type='button' onClick={this.signOut}>Sign out!</button>}
           </h1>
+          {console.log(this.state)}
+          {!this.state.isLoggedIn && <Redirect to='/' />}
         </header>
         <main className='App'>
           <Route 
@@ -57,18 +61,16 @@ class App extends Component {
                 <Login 
                   loggingIn={this.loggingIn}
                 />
+                {console.log(this.state)}
               </section>
             )}
           />
-          <Route
-            exact 
+          <Route 
+            exact
             path='/areas'
             render={() => (
               <section>
                 <header>
-                    <button className='sign-out-btn' type='button' onClick={this.signOut}>
-                      Sign out!
-                    </button>
                     {!this.state.isLoggedIn && <Redirect to='/' />}
                 </header>
                 <Areas 
@@ -79,7 +81,15 @@ class App extends Component {
               </section>
             )}
           />
-          
+          <Route
+            path='/areas/:area_id/listings'
+            render={({ location }) => (
+              <section>
+                {console.log('listings worked!')}
+                {console.log(this.state)}
+              </section>
+            )}
+          />
         </main>
         </div>
       );

@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Area extends Component {
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            viewListings: false
+        };
     }
 
-    handleClick = () => {
-        console.log('hello')
+    displayListings = () => {
+        this.setState({...this.state, viewListings: true})
     }
         
     render(){
@@ -19,9 +22,10 @@ class Area extends Component {
             <p>
                 {this.props.data.about}
             </p>
-            <button type='button' onClick={this.handleClick}>
+            <button type='button' onClick={this.displayListings}>
                 View Listings
             </button>
+            {this.state.viewListings && <Redirect to={`/areas/${this.props.data.id}/listings`} />}
         </section>
         )
     }
