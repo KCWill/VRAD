@@ -1,11 +1,14 @@
 import './ListingDetails.css';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 
 
 class ListingDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        area_id: 0,
         streetAddress:'',
         zipCode:0,
         numBedrooms: 0,
@@ -15,12 +18,14 @@ class ListingDetails extends Component {
         favorited: false,
     }
   }
-
+  // React kept saying that keys were undefined without explicitly writing out the data structure below
+  // tried doing it without and couldn't get it to work
   componentDidMount = () => {
       fetch(`https://vrad-api.herokuapp.com/api/v1/listings/${this.props.listing_id}`)
       .then(response => response.json())
       .then(data => this.setState({
         ...this.state,
+        area_id: data.area_id,
         streetAddress:data.address.street,
         zipCode: data.address.zip,
         numBedrooms: data.details.beds,
@@ -32,7 +37,7 @@ class ListingDetails extends Component {
   }
 
   markFavorite = () => {
-    console.log('favorite!')
+    this.props.addFavorite(this.props.listing_id);
   }
 
   render() {
@@ -49,6 +54,7 @@ class ListingDetails extends Component {
         <button type='button' onClick={this.markFavorite} className='view-listings-btn'>
             Favorite This Listing
         </button>
+        <Link to={`/areas/${this.state.area_id}/listings`} > View All Listings in Area </Link>
     </section> 
     )}
 }

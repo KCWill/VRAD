@@ -4,6 +4,7 @@ import Areas from '../Areas/Areas.js';
 import Login from '../Login/Login.js';
 import Listings from '../Listings/Listings.js';
 import ListingDetails from '../ListingDetails/ListingDetails.js';
+import Favorites from '../Favorites/Favorites.js';
 import { Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
@@ -15,7 +16,8 @@ class App extends Component {
       purpose: '',
       areas: [],
       currentArea: 0,
-      currentListings: []
+      currentListings: [],
+      userFavorites: []
     }
   }
 
@@ -25,6 +27,10 @@ class App extends Component {
 
   signOut = () => {
     this.setState({...this.state, isLoggedIn: false});
+  }
+
+  addFavorite = (favId) => {
+    this.setState({...this.state, userFavorites: [...this.state.userFavorites, favId]})
   }
 
   componentDidMount = () => {
@@ -104,7 +110,16 @@ class App extends Component {
             exact
             path='/areas/:area_id/listings/:listing_id'
             render={({match})=> (
-              <ListingDetails listing_id={match.params.listing_id} />
+              <ListingDetails 
+              addFavorite={this.addFavorite}
+              listing_id={match.params.listing_id} />
+            )}
+          />
+          <Route 
+            exact
+            path='/favorites'
+            render={()=>(
+              <Favorites userFavorites={this.state.userFavorites} />
             )}
           />
         </main>
