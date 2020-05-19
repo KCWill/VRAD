@@ -3,6 +3,7 @@ import './App.css';
 import Areas from '../Areas/Areas.js';
 import Login from '../Login/Login.js';
 import Listings from '../Listings/Listings.js';
+import ListingDetails from '../ListingDetails/ListingDetails.js';
 import { Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
@@ -38,14 +39,13 @@ class App extends Component {
             })
         })
         Promise.all(areaNamePromises)
-        .then(areaData => this.setState({areas: areaData}))
+        .then(areaData => this.setState({...this.state, areas: areaData}))
       })
       .catch(err => console.error(err));
   }
 
-  getListings = (currentListings) => {
-    this.setState({...this.state, currentListings: [...currentListings]})
-    console.log(this.state.currentListings)
+  getListings = (listings) => {
+    this.setState({...this.state, currentListings: listings})
   }
 
   render () {
@@ -56,7 +56,6 @@ class App extends Component {
           Vacation Rentals Around Denver
           {this.state.isLoggedIn && <button className='sign-out-btn' type='button' onClick={this.signOut}>Sign out!</button>}
         </h1>
-        {console.log(this.state)}
         {!this.state.isLoggedIn && <Redirect to='/' />}
         </header>
         <main className='App'>
@@ -67,7 +66,6 @@ class App extends Component {
                 <Login
                   loggingIn={this.loggingIn}
                 />
-                {console.log(this.state)}
               </section>
             )}
           />
@@ -89,14 +87,24 @@ class App extends Component {
             )}
           />
           <Route
+            exact
             path='/areas/:area_id/listings'
-            render={({ location, match }) => (
+            render={({ match }) => (
               <section>
                 <Listings
                   areaId={match.params.area_id}
+                  listings={this.state.currentListings}
                   />
                 {console.log(match.params.area_id)}
+                {console.log(this.state)}
               </section>
+            )}
+          />
+          <Route 
+            exact
+            path='/areas/:area_id/listings/:listing_id'
+            render={({match})=> (
+              <ListingDetails listing_id={match.params.listing_id} />
             )}
           />
         </main>
