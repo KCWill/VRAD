@@ -19,7 +19,7 @@ class Areas extends Component {
           {this.props.data.map((location, index) => {
             return (
               <div className='area-card' key={index}>
-                <Area data={location} shortName={location.shortName}/>
+                <Area data={location} shortName={location.shortName} getListings={this.props.getListings}/>
               </div>
           )}
           )}
