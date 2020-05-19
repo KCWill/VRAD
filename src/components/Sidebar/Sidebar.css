@@ -6,6 +6,7 @@
 
 .greeting {
   font-size: 1em;
+  margin: 0;
 }
 
 .choose-message {

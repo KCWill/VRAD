@@ -1,3 +1,26 @@
-.listing {
-  
+.listings-page {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  width: 100vw;
+  background-color: #FFFAF1;
+}
+
+.lisitings-card-holder {
+  /* border: solid 1px green; */
+  background-color: #FFFAF1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+.back-to-areas-btn {
+  border: 1px solid #004385;
+  height: 8%;
+  width: 15%;
+  font-size: 0.5em;
+  border-radius: 4px;
+  margin: 1%;
 }

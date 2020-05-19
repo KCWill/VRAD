@@ -40,7 +40,7 @@ class ListingDetails extends Component {
 
   render() {
     return (
-      <section>
+      <section className='listing-details'>
         {console.log('listingDetails', this.state.streetAddress)}
         <h5>Listing Details</h5>
         <h4>Street Address: {this.state.streetAddress}</h4>
@@ -49,7 +49,7 @@ class ListingDetails extends Component {
         <h4>Number of Bathrooms: {this.state.numBathrooms}</h4>
         <h4>Cost Per Night: {this.state.costPerNight}</h4>
         <h4>Features: {this.state.features.map((feature)=> ` ${feature}`)}</h4>
-        <button type='button' onClick={this.markFavorite} className='view-listings-btn'>
+        <button type='button' onClick={this.markFavorite} className='add-to-favs-btn'>
           Favorite This Listing
         </button>
         <Link to={`/areas/${this.state.area_id}/listings`} > View All Listings in Area </Link>
