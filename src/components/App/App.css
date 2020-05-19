@@ -13,15 +13,6 @@
   width: 100vw;
 }
 
-/* .login-page-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 7%;
-  background-color: #FFB4B1;
-} */
-
 .header-text {
   font-size: 1em;
 }
@@ -30,16 +21,18 @@
 
 .areas-page-header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  /* height: 50%; */
   background-color: #FFB4B1;
 }
 
 .header-text-area {
+  display: flex;
+  justify-content: space-between;
   font-size: 1em;
   margin: 1%;
+  width: 100%;
 }
 
 .sign-out-btn {
