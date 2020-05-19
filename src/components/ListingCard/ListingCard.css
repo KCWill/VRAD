@@ -1,14 +1,13 @@
 .listing-cards {
-  border: solid 1px red;
+  align-items: center;
+  background-color: #BFD7EA;
+  border: 1px solid #004385;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-around;
   margin: 2%;
   width: 40%;
-  border-radius: 4px;
-  border: 1px solid #004385;
-  background-color: #BFD7EA;
 }
 
 .listing-name {
@@ -17,13 +16,13 @@
 }
 
 .view-details-btn {
-  font-size: 0.5em;
-  border-radius: 4px;
   background-color: #FFFAF1;
   border: 1px solid #004385;
+  border-radius: 4px;
+  font-size: 0.5em;
 }
 
 .view-details-btn:hover {
-  cursor: pointer;
   background-color: #077380;
+  cursor: pointer;
 }
