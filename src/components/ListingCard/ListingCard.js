@@ -14,6 +14,7 @@ class ListingCard extends Component {
   displayListingDetails = () => {
     this.setState({...this.state, viewThisListing: true});
   }
+  
   componentDidMount = () => {
       fetch(`https://vrad-api.herokuapp.com${this.props.listingURL}`)
       .then(response => response.json())
@@ -22,16 +23,15 @@ class ListingCard extends Component {
   }
 
   render() {
-    return ( 
+    return (
     <section className='area-card'>
         <h3>{this.state.data.name}</h3>
         <button className='view-listings-btn' type='button' onClick={this.displayListingDetails}>
             View Listing Details
         </button>
         {this.state.viewThisListing && <Redirect to={`/areas/${this.state.data.area_id}/listings/${this.state.data.listing_id}`}/>}
-    </section> 
-
-    )}
+    </section>
+  )}
 }
 
 
