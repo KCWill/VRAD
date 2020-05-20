@@ -88,6 +88,7 @@ class App extends Component {
                   purpose={this.state.purpose}
                   username={this.state.username}
                   getListings={this.getListings}
+                  allFavorites={this.state.userFavorites}
                 />
               </section>
             )}
@@ -100,22 +101,23 @@ class App extends Component {
                 <Listings
                   areaId={match.params.area_id}
                   listings={this.state.currentListings}
+                  allFavorites={this.state.userFavorites}
                   />
                 {console.log(match.params.area_id)}
                 {console.log(this.state)}
               </section>
             )}
           />
-          <Route 
+          <Route
             exact
             path='/areas/:area_id/listings/:listing_id'
             render={({match})=> (
-              <ListingDetails 
+              <ListingDetails
               addFavorite={this.addFavorite}
               listing_id={match.params.listing_id} />
             )}
           />
-          <Route 
+          <Route
             exact
             path='/favorites'
             render={()=>(

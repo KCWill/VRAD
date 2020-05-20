@@ -16,7 +16,7 @@ class Listings extends Component {
   render() {
     return (
       <section className='listings-page'>
-        <Sidebar username={this.props.username} purpose={this.props.purpose}/>
+        <Sidebar username={this.props.username} purpose={this.props.purpose} allFavorites={this.props.allFavorites}/>
         <Link to='/areas' className="back-to-areas-btn">Back to areas of Denver</Link>
         <section className="lisitings-card-holder">
           {console.log('listings', this.props.listings)}
