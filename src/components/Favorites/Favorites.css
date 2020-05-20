@@ -1,3 +1,10 @@
 .favs-holder {
-  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+
+.add-favs {
+  margin: 10%;
 }

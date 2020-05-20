@@ -7,16 +7,12 @@
   flex-direction: column;
   justify-content: space-around;
   margin: 2%;
-  width: 40%;
+  max-width: 40%;
 }
 
 .listing-name {
   font-size: 0.7em;
   margin: 0;
-}
-
-.view-and-fav-btns {
-
 }
 
 .view-details-btn,
@@ -34,5 +30,5 @@
 }
 
 .listing-main-image {
-  width: 200px;
+  max-width: 50%;
 }
