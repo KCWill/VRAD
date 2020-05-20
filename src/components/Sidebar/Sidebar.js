@@ -24,6 +24,7 @@ class Sidebar extends Component {
           {this.props.purpose === 'Other' && (<h3 className="choose-message">Choose from these four wonderful areas of Denver for your trip. We're not asking questions.</h3>)}
         <button className="view-fav-btn" onClick={this.viewFavorites} type="button">{`View Favorites (${this.props.allFavorites.length})`}</button>
         {this.state.viewFavorites && <Redirect to='/favorites'/>}
+        
       </section>
     )
   }
