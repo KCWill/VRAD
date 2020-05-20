@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Areas.css';
-import Area from '../Area/Area.js'
-import Sidebar from '../Sidebar/Sidebar.js'
+import Area from '../Area/Area.js';
+import Sidebar from '../Sidebar/Sidebar.js';
 
 class Areas extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Areas extends Component {
   render() {
     return (
       <section className='areas-page'>
-        <Sidebar username={this.props.username} purpose={this.props.purpose}/>
+        <Sidebar username={this.props.username} purpose={this.props.purpose} allFavorites={this.props.allFavorites}/>
         <section className='area-container'>
           {this.props.data.map((location, index) => {
             return (

@@ -5,7 +5,15 @@
   width: 100vw;
 }
 
-.lisitings-card-holder {
+.listings-main-view {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  overflow: scroll;
+}
+
+.listings-card-holder {
   background-color: #FFFAF1;
   display: flex;
   flex-direction: row;

@@ -33,6 +33,13 @@ class App extends Component {
     this.setState({...this.state, userFavorites: [...this.state.userFavorites, favId]})
   }
 
+  removeFavorite = (cardId) => {
+    let updatedFavs = this.state.userFavorites.filter(fav => {
+      return cardId !== fav
+    });
+    this.setState({...this.state, userFavorites: updatedFavs})
+  }
+
   componentDidMount = () => {
     fetch("https://vrad-api.herokuapp.com/api/v1/areas")
       .then(response => response.json())
@@ -88,6 +95,7 @@ class App extends Component {
                   purpose={this.state.purpose}
                   username={this.state.username}
                   getListings={this.getListings}
+                  allFavorites={this.state.userFavorites}
                 />
               </section>
             )}
@@ -98,28 +106,39 @@ class App extends Component {
             render={({ match }) => (
               <section>
                 <Listings
+                  purpose={this.state.purpose}
+                  username={this.state.username}
                   areaId={match.params.area_id}
                   listings={this.state.currentListings}
-                  />
-                {console.log(match.params.area_id)}
-                {console.log(this.state)}
+                  addFavorite={this.addFavorite}
+                  allFavorites={this.state.userFavorites}
+                  removeFavorite={this.removeFavorite} />
               </section>
             )}
           />
-          <Route 
+          <Route
             exact
             path='/areas/:area_id/listings/:listing_id'
             render={({match})=> (
-              <ListingDetails 
+              <ListingDetails
               addFavorite={this.addFavorite}
-              listing_id={match.params.listing_id} />
+              purpose={this.state.purpose}
+              username={this.state.username}
+              allFavorites={this.state.userFavorites}
+              listing_id={match.params.listing_id}
+              removeFavorite={this.removeFavorite} />
             )}
           />
-          <Route 
+          <Route
             exact
             path='/favorites'
             render={()=>(
-              <Favorites userFavorites={this.state.userFavorites} />
+              <Favorites
+                addFavorite={this.addFavorite}
+                allFavorites={this.state.userFavorites}
+                purpose={this.state.purpose}
+                username={this.state.username}
+                removeFavorite={this.removeFavorite} />
             )}
           />
         </main>

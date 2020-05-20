@@ -15,14 +15,20 @@
   margin: 0;
 }
 
-.view-details-btn {
+.view-and-fav-btns {
+
+}
+
+.view-details-btn,
+.add-to-favs-btn-list-page {
   background-color: #FFFAF1;
   border: 1px solid #004385;
   border-radius: 4px;
   font-size: 0.5em;
 }
 
-.view-details-btn:hover {
+.view-details-btn:hover,
+.add-to-favs-btn-list-page:hover {
   background-color: #077380;
   cursor: pointer;
 }

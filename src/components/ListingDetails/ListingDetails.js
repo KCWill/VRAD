@@ -1,6 +1,7 @@
 import './ListingDetails.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar.js'
 
 class ListingDetails extends Component {
   constructor(props) {
@@ -36,10 +37,18 @@ class ListingDetails extends Component {
 
   markFavorite = () => {
     this.props.addFavorite(this.props.listing_id);
+    this.setState({...this.state, favorited: true})
+  }
+
+  unmarkFavorite = () => {
+    this.props.removeFavorite(this.props.listing_id);
+    this.setState({...this.state, favorited: false})
   }
 
   render() {
     return (
+      <section className="listings-dets-page">
+        <Sidebar username={this.props.username} purpose={this.props.purpose} allFavorites={this.props.allFavorites}/>
       <section className='listing-details'>
         {console.log('listingDetails', this.state.streetAddress)}
         <h5>Listing Details</h5>
@@ -52,10 +61,14 @@ class ListingDetails extends Component {
         <img src={`/images/${this.props.listing_id}_a.jpg`} className='listing-photos' />
         <img src={`/images/${this.props.listing_id}_b.jpg`} className='listing-photos' />
         <img src={`/images/${this.props.listing_id}_c.jpg`} className='listing-photos' />
-        <button type='button' onClick={this.markFavorite} className='add-to-favs-btn'>
+        {!this.state.favorited && <button type='button' onClick={this.markFavorite} className='add-to-favs-btn-list-page'>
           Favorite This Listing
-        </button>
+        </button>}
+        {this.state.favorited && <button type='button' onClick={this.unmarkFavorite} className='add-to-favs-btn-list-page'>
+          Remove This Listing
+        </button>}
         <Link to={`/areas/${this.state.area_id}/listings`} > View All Listings in Area </Link>
+      </section>
       </section>
   )}
 }

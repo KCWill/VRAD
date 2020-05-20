@@ -11,16 +11,19 @@ class Listings extends Component {
 
     }
   }
+
   // Used the same class names as the areas, need to change in the future, but it
   // does the job for now.
   render() {
     return (
       <section className='listings-page'>
-        <Sidebar username={this.props.username} purpose={this.props.purpose}/>
-        <Link to='/areas' className="back-to-areas-btn">Back to areas of Denver</Link>
-        <section className="lisitings-card-holder">
-          {console.log('listings', this.props.listings)}
-          {this.props.listings.map( (listing) => <ListingCard listingURL={listing} /> )}
+        <Sidebar username={this.props.username} purpose={this.props.purpose} allFavorites={this.props.allFavorites}/>
+        <section className="listings-main-view">
+          <Link to='/areas' className="back-to-areas-btn">Back to areas of Denver</Link>
+          <section className="listings-card-holder">
+            {console.log('listings', this.props.listings)}
+            {this.props.listings.map( (listing) => <ListingCard listingURL={listing} allFavorites={this.props.allFavorites} addFavorite={this.props.addFavorite} removeFavorite={this.props.removeFavorite}/> )}
+          </section>
         </section>
       </section>
   )}
