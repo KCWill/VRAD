@@ -21,8 +21,7 @@ class Listings extends Component {
         <section className="listings-main-view">
           <Link to='/areas' className="back-to-areas-btn">Back to areas of Denver</Link>
           <section className="listings-card-holder">
-            {console.log('listings', this.props.listings)}
-            {this.props.listings.map( (listing) => <ListingCard listingURL={listing} allFavorites={this.props.allFavorites} addFavorite={this.props.addFavorite} removeFavorite={this.props.removeFavorite}/> )}
+            {this.props.listings.map( (listing, index) => <ListingCard key={`${index}`} listingURL={listing} allFavorites={this.props.allFavorites} addFavorite={this.props.addFavorite} removeFavorite={this.props.removeFavorite}/> )}
           </section>
         </section>
       </section>

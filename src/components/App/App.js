@@ -6,6 +6,7 @@ import Listings from '../Listings/Listings.js';
 import ListingDetails from '../ListingDetails/ListingDetails.js';
 import Favorites from '../Favorites/Favorites.js';
 import { Route, Redirect } from 'react-router-dom';
+import { getAreaDetails } from '../../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -40,21 +41,9 @@ class App extends Component {
     this.setState({...this.state, userFavorites: updatedFavs})
   }
 
-  componentDidMount = () => {
-    fetch("https://vrad-api.herokuapp.com/api/v1/areas")
-      .then(response => response.json())
-      .then(areaDetails => {
-        const areaNamePromises = areaDetails.areas.map(area => {
-          return fetch(`https://vrad-api.herokuapp.com${area.details}`)
-            .then(response => response.json())
-            .then(info => {
-              return {...info, shortName:area.area}
-            })
-        })
-        Promise.all(areaNamePromises)
-        .then(areaData => this.setState({...this.state, areas: areaData}))
-      })
-      .catch(err => console.error(err));
+  componentDidMount = async () => {
+    const areaDetails = await getAreaDetails();
+    this.setState({...this.state, areas: areaDetails})
   }
 
   getListings = (listings) => {

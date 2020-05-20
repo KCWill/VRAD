@@ -1,6 +1,7 @@
 import './ListingCard.css';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { getListingData } from '../../apiCalls';
 
 class ListingCard extends Component {
   constructor(props) {
@@ -30,18 +31,16 @@ class ListingCard extends Component {
   // will also add the same method to listing Details
   // making sure that the fav button instead says remove from fav when that listing is faved.
 
-  componentDidMount = () => {
-    fetch(`https://vrad-api.herokuapp.com${this.props.listingURL}`)
-    .then(response => response.json())
-    .then(data => this.setState({...this.state, data}))
-    .catch(err => console.log(err))
+  componentDidMount = async () => {
+    const listingData = await getListingData(this.props.listingURL);
+    this.setState({...this.state, data: listingData});
   }
 
   render() {
     return (
     <section className='listing-cards'>
       <h3 className="listing-name">{this.state.data.name}</h3>
-      <img src={`/images/${this.state.data.listing_id}_a.jpg`} className='listing-main-image'/>
+      <img src={`/images/${this.state.data.listing_id}_a.jpg`} alt='listing detail' className='listing-main-image'/>
         <div className="view-and-fav-btns">
           <button className='view-details-btn' type='button' onClick={this.displayListingDetails}>
             View Listing Details

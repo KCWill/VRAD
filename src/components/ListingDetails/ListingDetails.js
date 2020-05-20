@@ -2,6 +2,7 @@ import './ListingDetails.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar.js'
+import { getListingDetails } from '../../apiCalls';
 
 class ListingDetails extends Component {
   constructor(props) {
@@ -19,20 +20,18 @@ class ListingDetails extends Component {
   }
   // React kept saying that keys were undefined without explicitly writing out the data structure below
   // tried doing it without and couldn't get it to work
-  componentDidMount = () => {
-    fetch(`https://vrad-api.herokuapp.com/api/v1/listings/${this.props.listing_id}`)
-    .then(response => response.json())
-    .then(data => this.setState({
+  componentDidMount = async () => {
+    const listingDetails = await getListingDetails(this.props.listing_id);
+    this.setState({
       ...this.state,
-      area_id: data.area_id,
-      streetAddress:data.address.street,
-      zipCode: data.address.zip,
-      numBedrooms: data.details.beds,
-      numBathrooms: data.details.baths,
-      costPerNight: data.details.cost_per_night,
-      features: data.details.features
-      }))
-    .catch(err => console.log(err))
+      area_id: listingDetails.area_id,
+      streetAddress: listingDetails.address.street,
+      zipCode: listingDetails.address.zip,
+      numBedrooms: listingDetails.details.beds,
+      numBathrooms: listingDetails.details.baths,
+      costPerNight: listingDetails.details.cost_per_night,
+      features: listingDetails.details.features
+      });
   }
 
   markFavorite = () => {
@@ -57,7 +56,7 @@ class ListingDetails extends Component {
           <h5>Number of Beds: {this.state.numBedrooms}</h5>
           <h5>Number of Bathrooms: {this.state.numBathrooms}</h5>
           <h5>Cost Per Night: ${this.state.costPerNight}</h5>
-          <ul>Features: {this.state.features.map((feature)=> <li>{feature}</li>)}</ul>
+          <ul key='Features list'>Features: {this.state.features.map((feature, index)=> <li key={`${index}`}>{feature}</li>)}</ul>
           {!this.state.favorited && <button type='button' onClick={this.markFavorite} className='add-to-favs-btn-list-page'>
             Favorite This Listing
           </button>}
@@ -67,9 +66,9 @@ class ListingDetails extends Component {
           <Link to={`/areas/${this.state.area_id}/listings`} className="back-to-list"> View All Listings in Area </Link>
         </div>
         <div className="image-holder">
-          <img src={`/images/${this.props.listing_id}_a.jpg`} className='listing-photos' />
-          <img src={`/images/${this.props.listing_id}_b.jpg`} className='listing-photos' />
-          <img src={`/images/${this.props.listing_id}_c.jpg`} className='listing-photos' />
+          <img src={`/images/${this.props.listing_id}_a.jpg`} alt='listing detail' className='listing-photos' />
+          <img src={`/images/${this.props.listing_id}_b.jpg`} alt='listing detail' className='listing-photos' />
+          <img src={`/images/${this.props.listing_id}_c.jpg`} alt='listing detail' className='listing-photos' />
         </div>
       </section>
       </section>

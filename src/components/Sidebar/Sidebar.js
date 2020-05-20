@@ -12,7 +12,6 @@ class Sidebar extends Component {
 
   viewFavorites = () => {
     this.setState({...this.state, viewFavorites: true})
-    console.log('favorite!')
   }
 
   render() {

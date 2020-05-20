@@ -4,13 +4,14 @@
   flex-direction: row;
   height: 100vh;
   justify-content: center;
-  width: 75%;
+  width: 100vw;
 }
 
 .listings-dets-page {
   display: flex;
   flex-direction: row;
   height: 100%;
+  width: 100vw;
 }
 
 .listing-photos {
