@@ -1,0 +1,28 @@
+.listing-cards {
+  align-items: center;
+  background-color: #BFD7EA;
+  border: 1px solid #004385;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 2%;
+  width: 40%;
+}
+
+.listing-name {
+  font-size: 0.7em;
+  margin: 0;
+}
+
+.view-details-btn {
+  background-color: #FFFAF1;
+  border: 1px solid #004385;
+  border-radius: 4px;
+  font-size: 0.5em;
+}
+
+.view-details-btn:hover {
+  background-color: #077380;
+  cursor: pointer;
+}

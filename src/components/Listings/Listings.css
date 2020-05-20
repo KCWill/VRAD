@@ -1,0 +1,30 @@
+.listings-page {
+  background-color: #FFFAF1;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+.lisitings-card-holder {
+  background-color: #FFFAF1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 70%;
+}
+
+.back-to-areas-btn {
+  background-color: #BFD7EA;
+  border: 1px solid #004385;
+  border-radius: 4px;
+  font-size: 0.5em;
+  height: 8%;
+  margin: 1% 0 0 1%;
+  padding: 0.2%;
+  width: 15%;
+}
+
+.back-to-areas-btn:hover {
+  background-color: #077380;
+}

@@ -12,8 +12,8 @@ class Favorites extends Component {
   render() {
     return (
       <section>
-          {this.props.userFavorites.map((favorite)=> ` favorite`)}
-          {!this.props.userFavorites.length && <h3>Add some favorites!</h3>}
+        {this.props.userFavorites.map((favorite)=> ` favorite`)}
+        {!this.props.userFavorites.length && <h3>Add some favorites!</h3>}
       </section>
     )
   }

@@ -2,8 +2,6 @@ import './ListingDetails.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 class ListingDetails extends Component {
   constructor(props) {
     super(props);
@@ -21,19 +19,19 @@ class ListingDetails extends Component {
   // React kept saying that keys were undefined without explicitly writing out the data structure below
   // tried doing it without and couldn't get it to work
   componentDidMount = () => {
-      fetch(`https://vrad-api.herokuapp.com/api/v1/listings/${this.props.listing_id}`)
-      .then(response => response.json())
-      .then(data => this.setState({
-        ...this.state,
-        area_id: data.area_id,
-        streetAddress:data.address.street,
-        zipCode: data.address.zip,
-        numBedrooms: data.details.beds,
-        numBathrooms: data.details.baths,
-        costPerNight: data.details.cost_per_night,
-        features: data.details.features
-        }))
-      .catch(err => console.log(err))
+    fetch(`https://vrad-api.herokuapp.com/api/v1/listings/${this.props.listing_id}`)
+    .then(response => response.json())
+    .then(data => this.setState({
+      ...this.state,
+      area_id: data.area_id,
+      streetAddress:data.address.street,
+      zipCode: data.address.zip,
+      numBedrooms: data.details.beds,
+      numBathrooms: data.details.baths,
+      costPerNight: data.details.cost_per_night,
+      features: data.details.features
+      }))
+    .catch(err => console.log(err))
   }
 
   markFavorite = () => {
@@ -41,8 +39,8 @@ class ListingDetails extends Component {
   }
 
   render() {
-    return ( 
-    <section>
+    return (
+      <section className='listing-details'>
         {console.log('listingDetails', this.state.streetAddress)}
         <h5>Listing Details</h5>
         <h4>Street Address: {this.state.streetAddress}</h4>
@@ -51,13 +49,12 @@ class ListingDetails extends Component {
         <h4>Number of Bathrooms: {this.state.numBathrooms}</h4>
         <h4>Cost Per Night: {this.state.costPerNight}</h4>
         <h4>Features: {this.state.features.map((feature)=> ` ${feature}`)}</h4>
-        <button type='button' onClick={this.markFavorite} className='view-listings-btn'>
-            Favorite This Listing
+        <button type='button' onClick={this.markFavorite} className='add-to-favs-btn'>
+          Favorite This Listing
         </button>
         <Link to={`/areas/${this.state.area_id}/listings`} > View All Listings in Area </Link>
-    </section> 
-    )}
+      </section>
+  )}
 }
-
 
 export default ListingDetails

@@ -1,11 +1,12 @@
 .sidebar {
   background-color: #077380;
-  width: 25%;
   height: 100vh;
+  width: 25%;
 }
 
 .greeting {
   font-size: 1em;
+  margin: 0;
 }
 
 .choose-message {

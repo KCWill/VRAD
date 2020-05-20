@@ -1,53 +1,42 @@
 .App {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: column;
+  height: 100vh;
   text-align: center;
+  width: 100vw;
 }
-
-/* Login Page CSS */
 
 .login-page {
   width: 100vw;
 }
 
-/* .login-page-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 7%;
-  background-color: #FFB4B1;
-} */
-
 .header-text {
   font-size: 1em;
 }
 
-/* Areas Page Header CSS */
-
 .areas-page-header {
-  display: flex;
-  justify-content: space-around;
   align-items: center;
-  width: 100%;
-  /* height: 50%; */
   background-color: #FFB4B1;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .header-text-area {
+  display: flex;
   font-size: 1em;
+  justify-content: space-between;
   margin: 1%;
+  width: 100%;
 }
 
 .sign-out-btn {
-  font-size: 0.6em;
-  border-radius: 4px;
-  cursor: pointer;
   background-color: #FFFAF1;
   border: solid 1px #004385;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.6em;
 }
 
 .sign-out-btn:hover {
