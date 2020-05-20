@@ -103,6 +103,7 @@ class App extends Component {
                   username={this.state.username}
                   areaId={match.params.area_id}
                   listings={this.state.currentListings}
+                  addFavorite={this.addFavorite}
                   allFavorites={this.state.userFavorites}
                   />
                 {console.log(match.params.area_id)}
@@ -126,7 +127,11 @@ class App extends Component {
             exact
             path='/favorites'
             render={()=>(
-              <Favorites userFavorites={this.state.userFavorites} />
+              <Favorites
+                addFavorite={this.addFavorite}
+                allFavorites={this.state.userFavorites}
+                purpose={this.state.purpose}
+                username={this.state.username} />
             )}
           />
         </main>
