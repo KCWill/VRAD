@@ -12,7 +12,6 @@ class Listings extends Component {
     }
   }
 
-
   // Used the same class names as the areas, need to change in the future, but it
   // does the job for now.
   render() {
@@ -23,7 +22,7 @@ class Listings extends Component {
           <Link to='/areas' className="back-to-areas-btn">Back to areas of Denver</Link>
           <section className="listings-card-holder">
             {console.log('listings', this.props.listings)}
-            {this.props.listings.map( (listing) => <ListingCard listingURL={listing} allFavorites={this.props.allFavorites} addFavorite={this.props.addFavorite}/> )}
+            {this.props.listings.map( (listing) => <ListingCard listingURL={listing} allFavorites={this.props.allFavorites} addFavorite={this.props.addFavorite} removeFavorite={this.props.removeFavorite}/> )}
           </section>
         </section>
       </section>

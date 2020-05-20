@@ -33,6 +33,13 @@ class App extends Component {
     this.setState({...this.state, userFavorites: [...this.state.userFavorites, favId]})
   }
 
+  removeFavorite = (cardId) => {
+    let updatedFavs = this.state.userFavorites.filter(fav => {
+      return cardId !== fav
+    });
+    this.setState({...this.state, userFavorites: updatedFavs})
+  }
+
   componentDidMount = () => {
     fetch("https://vrad-api.herokuapp.com/api/v1/areas")
       .then(response => response.json())
@@ -105,9 +112,7 @@ class App extends Component {
                   listings={this.state.currentListings}
                   addFavorite={this.addFavorite}
                   allFavorites={this.state.userFavorites}
-                  />
-                {console.log(match.params.area_id)}
-                {console.log(this.state)}
+                  removeFavorite={this.removeFavorite} />
               </section>
             )}
           />
@@ -120,7 +125,8 @@ class App extends Component {
               purpose={this.state.purpose}
               username={this.state.username}
               allFavorites={this.state.userFavorites}
-              listing_id={match.params.listing_id} />
+              listing_id={match.params.listing_id}
+              removeFavorite={this.removeFavorite} />
             )}
           />
           <Route
@@ -131,7 +137,8 @@ class App extends Component {
                 addFavorite={this.addFavorite}
                 allFavorites={this.state.userFavorites}
                 purpose={this.state.purpose}
-                username={this.state.username} />
+                username={this.state.username}
+                removeFavorite={this.removeFavorite} />
             )}
           />
         </main>

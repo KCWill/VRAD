@@ -17,7 +17,7 @@ class Favorites extends Component {
         <Sidebar username={this.props.username} purpose={this.props.purpose} allFavorites={this.props.allFavorites}/>
         <section className="favs-holder">
           {this.props.allFavorites.map((favorite)=> {
-            return <ListingCard listingURL={`/api/v1/listings/${favorite}`} allFavorites={this.props.allFavorites} addFavorite={this.props.addFavorite} />
+            return <ListingCard listingURL={`/api/v1/listings/${favorite}`} allFavorites={this.props.allFavorites} addFavorite={this.props.addFavorite} removeFavorite={this.props.removeFavorite} favoriteView={true}/>
           })}
           {!this.props.allFavorites.length && <h3>Add some favorites!</h3>}
         </section>
