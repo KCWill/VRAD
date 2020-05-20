@@ -49,6 +49,9 @@ class ListingDetails extends Component {
         <h4>Number of Bathrooms: {this.state.numBathrooms}</h4>
         <h4>Cost Per Night: {this.state.costPerNight}</h4>
         <h4>Features: {this.state.features.map((feature)=> ` ${feature}`)}</h4>
+        <img src={`/images/${this.props.listing_id}_a.jpg`} className='listing-photos' />
+        <img src={`/images/${this.props.listing_id}_b.jpg`} className='listing-photos' />
+        <img src={`/images/${this.props.listing_id}_c.jpg`} className='listing-photos' />
         <button type='button' onClick={this.markFavorite} className='add-to-favs-btn'>
           Favorite This Listing
         </button>

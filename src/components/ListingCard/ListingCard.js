@@ -26,6 +26,7 @@ class ListingCard extends Component {
     return (
     <section className='listing-cards'>
       <h3 className="listing-name">{this.state.data.name}</h3>
+      <img src={`/images/${this.state.data.listing_id}_a.jpg`} className='listing-main-image'/> 
         <button className='view-details-btn' type='button' onClick={this.displayListingDetails}>
           View Listing Details
         </button>

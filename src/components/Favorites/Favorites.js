@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Favorites.css';
+import ListingCard from '../ListingCard/ListingCard.js'
 
 class Favorites extends Component {
   constructor(props) {
@@ -11,8 +12,10 @@ class Favorites extends Component {
 
   render() {
     return (
-      <section>
-        {this.props.userFavorites.map((favorite)=> ` favorite`)}
+      <section className="lisitings-card-holder">
+        {this.props.userFavorites.map((favorite)=> {
+           return <ListingCard listingURL={`/api/v1/listings/${favorite}`} />
+        })}
         {!this.props.userFavorites.length && <h3>Add some favorites!</h3>}
       </section>
     )
