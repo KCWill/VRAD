@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Areas.css';
-import Area from '../Area/Area.js'
-import Sidebar from '../Sidebar/Sidebar.js'
+import Area from '../Area/Area.js';
+import Sidebar from '../Sidebar/Sidebar.js';
 
 class Areas extends Component {
   constructor(props) {

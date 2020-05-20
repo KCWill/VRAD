@@ -15,8 +15,6 @@ class Sidebar extends Component {
     console.log('favorite!')
   }
 
-
-
   render() {
     return (
       <section className='sidebar'>
@@ -24,7 +22,7 @@ class Sidebar extends Component {
           {this.props.purpose === 'Vacation' && (<h3 className="choose-message">Choose from these four wonderful areas of Denver for your vacation.</h3>)}
           {this.props.purpose === 'Business' && (<h3 className="choose-message">Choose from these four wonderful areas of Denver for your business trip.</h3>)}
           {this.props.purpose === 'Other' && (<h3 className="choose-message">Choose from these four wonderful areas of Denver for your trip. We're not asking questions.</h3>)}
-        <button className="view-fav-btn" onClick={this.viewFavorites} type="button">{`View Favorites ( ${this.props.allFavorites.length} )`}</button>
+        <button className="view-fav-btn" onClick={this.viewFavorites} type="button">{`View Favorites (${this.props.allFavorites.length})`}</button>
         {this.state.viewFavorites && <Redirect to='/favorites'/>}
       </section>
     )

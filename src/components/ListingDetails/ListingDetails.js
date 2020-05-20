@@ -1,6 +1,7 @@
 import './ListingDetails.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar.js'
 
 class ListingDetails extends Component {
   constructor(props) {
@@ -40,6 +41,8 @@ class ListingDetails extends Component {
 
   render() {
     return (
+      <section className="listings-dets-page">
+        <Sidebar username={this.props.username} purpose={this.props.purpose} allFavorites={this.props.allFavorites}/>
       <section className='listing-details'>
         {console.log('listingDetails', this.state.streetAddress)}
         <h5>Listing Details</h5>
@@ -56,6 +59,7 @@ class ListingDetails extends Component {
           Favorite This Listing
         </button>
         <Link to={`/areas/${this.state.area_id}/listings`} > View All Listings in Area </Link>
+      </section>
       </section>
   )}
 }

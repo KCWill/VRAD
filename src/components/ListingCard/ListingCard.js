@@ -6,8 +6,8 @@ class ListingCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        data: {},
-        viewThisListing: false,
+      data: {},
+      viewThisListing: false,
     }
   }
 
@@ -16,17 +16,17 @@ class ListingCard extends Component {
   }
 
   componentDidMount = () => {
-      fetch(`https://vrad-api.herokuapp.com${this.props.listingURL}`)
-      .then(response => response.json())
-      .then(data => this.setState({...this.state, data}))
-      .catch(err => console.log(err))
+    fetch(`https://vrad-api.herokuapp.com${this.props.listingURL}`)
+    .then(response => response.json())
+    .then(data => this.setState({...this.state, data}))
+    .catch(err => console.log(err))
   }
 
   render() {
     return (
     <section className='listing-cards'>
       <h3 className="listing-name">{this.state.data.name}</h3>
-      <img src={`/images/${this.state.data.listing_id}_a.jpg`} className='listing-main-image'/> 
+      <img src={`/images/${this.state.data.listing_id}_a.jpg`} className='listing-main-image'/>
         <button className='view-details-btn' type='button' onClick={this.displayListingDetails}>
           View Listing Details
         </button>

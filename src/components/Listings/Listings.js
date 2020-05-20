@@ -17,10 +17,12 @@ class Listings extends Component {
     return (
       <section className='listings-page'>
         <Sidebar username={this.props.username} purpose={this.props.purpose} allFavorites={this.props.allFavorites}/>
-        <Link to='/areas' className="back-to-areas-btn">Back to areas of Denver</Link>
-        <section className="lisitings-card-holder">
-          {console.log('listings', this.props.listings)}
-          {this.props.listings.map( (listing) => <ListingCard listingURL={listing} /> )}
+        <section className="listings-main-view">
+          <Link to='/areas' className="back-to-areas-btn">Back to areas of Denver</Link>
+          <section className="listings-card-holder">
+            {console.log('listings', this.props.listings)}
+            {this.props.listings.map( (listing) => <ListingCard listingURL={listing} allFavorites={this.props.allFavorites}/> )}
+          </section>
         </section>
       </section>
   )}

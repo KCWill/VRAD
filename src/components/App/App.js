@@ -99,6 +99,8 @@ class App extends Component {
             render={({ match }) => (
               <section>
                 <Listings
+                  purpose={this.state.purpose}
+                  username={this.state.username}
                   areaId={match.params.area_id}
                   listings={this.state.currentListings}
                   allFavorites={this.state.userFavorites}
@@ -114,6 +116,9 @@ class App extends Component {
             render={({match})=> (
               <ListingDetails
               addFavorite={this.addFavorite}
+              purpose={this.state.purpose}
+              username={this.state.username}
+              allFavorites={this.state.userFavorites}
               listing_id={match.params.listing_id} />
             )}
           />
