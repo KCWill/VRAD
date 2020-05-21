@@ -2,7 +2,7 @@
 
 VRAD (Vacation Rentals Around Denver), was an assigned paired project in Module 3 at Turing. We had 9 and a half days to complete this application in React, of which we are brand new to. The goal was to make an application that showed available homes to rent around the Denver area. The user can view a list of the four main areas that Denver is broken into, view specific homes in each area, and the details about each available home. The user starts by logging in with a username, an email, and a purpose for their trip to Denver. They can also favorite homes that they like, to save it for later, and see all of the homes they selected as a favorite. 
 
-## Leanring Goals:
+## Learning Goals:
 
 Our learning goals for this project was to understand the flow of react better. We also needed to impliment testing every component using react testing library, jest, and async/await testing. We were able to get an async test working but would have liked to get further testing for other components. 
 
