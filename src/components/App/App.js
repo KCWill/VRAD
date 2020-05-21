@@ -43,7 +43,7 @@ class App extends Component {
 
   componentDidMount = async () => {
     const areaDetails = await getAreaDetails();
-    this.setState({...this.state, areas: areaDetails})
+    this.setState({...this.state, areas: areaDetails});
   }
 
   getListings = (listings) => {
